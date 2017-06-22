@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>{{title}}
+    <ion-icon name="md-checkmark" class="right" (click)="confirmSong()"></ion-icon>
+	</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+ <ion-input text-center	type="text" [(ngModel)]="songName" placeholder="Song Name"></ion-input>
+ <ion-input text-center	type="text" [(ngModel)]="capo" placeholder="Capo"></ion-input>
+
+ <ion-textarea [(ngModel)]="chords" placeholder="Enter the chords" class="chords-area"></ion-textarea>
+
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Chords
+      <ion-icon name="create" class="fRight" (click)="editChords()"></ion-icon>
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+<div style="line-height:28px;height:28px;text-align:center;"><ion-label text-center>{{song.name}} <ion-icon name="volume-up" class="pLeft10" (click)="playFile()"></ion-icon></ion-label></div>
+<ion-label text-center>Capo : {{song.capo}}</ion-label>
+
+<ion-label text-center class="chords_used" (click)="showChordChart(song.chords_used)">Chords Used : {{song.chords_used}}</ion-label>
+
+<ion-label class="chords"><div [innerHTML]="song.chords"></div></ion-label>
+
+</ion-content>

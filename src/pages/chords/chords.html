@@ -1,0 +1,28 @@
+<ion-header class="page-home">
+  <ion-navbar hideBackButton="true">
+    <ion-title text-center>Songs Chords</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="page-home">
+<!-- Search bar -->
+<ion-searchbar animated="true" class="searchBar"
+  [(ngModel)]="searchTerm"
+  [showCancelButton]="false"
+  (ionInput)="onInput($event)">
+</ion-searchbar>
+<!-- Search bar end -->
+
+<!-- List -->
+<ion-list *ngIf="displayedSongList.length != 0" class="songList">
+   <ion-item *ngFor="let item of displayedSongList | orderBy : order" (click)="viewChords(item)">
+      {{item.name}} 
+      <ion-icon name="build" class="capoIcon" *ngIf="item.capo != 0"></ion-icon>
+   </ion-item>
+</ion-list>
+<p *ngIf="displayedSongList.length == 0" class="msg">No songs yet</p>
+<!-- List end -->
+
+
+ <ion-icon name="add-circle" class="addIcon" [navPush]="addSong"></ion-icon>
+</ion-content>

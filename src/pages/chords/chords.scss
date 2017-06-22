@@ -1,0 +1,37 @@
+.page-home {
+	padding : 0 !important;
+}
+
+.searchBar {
+	width : 100%;
+	padding : 0 !important;
+	position : fixed;
+	top : 56px;	
+	z-index : 1;
+}
+
+.scroll-content {
+	padding : 5px 0 0 0 !important;
+}
+
+.songList {
+	padding-top : 45px !important;	
+}
+
+.msg {
+	padding-top : 45px !important;	
+	color : #dedede;
+	text-align : center;
+}
+
+.addIcon {
+	position : fixed;
+	bottom : 56px;
+	right : 10px;
+	font-size : 50px;
+}
+
+.capoIcon {
+	float : right;
+	font-size : 12px;
+}
