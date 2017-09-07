@@ -7,6 +7,19 @@
 </ion-header>
 
 <ion-content padding>
-<button (click)="startRecording()">Start recording</button>
-
+        <button ion-button (click)="startRecording()">
+         Start recording
+        </button>
+        <button ion-button (click)="stopRecording()">
+         Stop recording
+        </button>
+       
+        <div *ngIf = "recorded">
+            <button ion-button (click)="playRecording()">
+             Start playback
+            </button>
+            <button ion-button (click)="stopRecordingPlay()">
+             Stop playback
+            </button>
+        </div>
 </ion-content>

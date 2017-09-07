@@ -3,8 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { FileOpener } from '@ionic-native/file-opener';
 import { MyApp } from './app.component';
+import { HttpModule } from '@angular/http';
 
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProviderFactory } from 'ionic-audio';
+
 
 import { RecordPage } from '../pages/record/record';
 import { SongsPage } from '../pages/songs/songs';
@@ -31,7 +34,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     Ng2OrderModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicAudioModule.forRoot(defaultAudioProviderFactory)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -11,10 +11,11 @@
 <ion-content padding>
 
 
-<div style="line-height:28px;height:28px;text-align:center;"><ion-label text-center>{{song.name}} <ion-icon name="volume-up" class="pLeft10" (click)="playFile()"></ion-icon></ion-label></div>
+<div style="line-height:28px;height:28px;text-align:center;"><ion-label text-center>{{song.name}} <audio-track #audio *ngFor="let track of myTracks"  [track]="track" (onFinish)="onTrackFinished($event)"><audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play> </audio-track></ion-label></div>
 <ion-label text-center>Capo : {{song.capo}}</ion-label>
 
-<ion-label text-center class="chords_used" (click)="showChordChart(song.chords_used)">Chords Used : {{song.chords_used}}</ion-label>
+<ion-label text-center class="chords_used">Chords Used : {{song.chords_used}}</ion-label>
+
 
 <ion-label class="chords"><div [innerHTML]="song.chords"></div></ion-label>
 

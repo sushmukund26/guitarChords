@@ -3,7 +3,7 @@ import { NavController , NavParams , AlertController } from 'ionic-angular';
 
 import { AddSong } from '../addSong/addSong';
 
-import { FileOpener } from '@ionic-native/file-opener';
+import { AudioProvider } from 'ionic-audio';
 
 
 @Component({
@@ -13,47 +13,50 @@ import { FileOpener } from '@ionic-native/file-opener';
 
 export class ChordsDisplayPage {
 song;
+  myTracks: any[];
+  allTracks: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private fileOpener: FileOpener) {
-  	this.song = navParams.get("song");
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private _audioProvider: AudioProvider) {
+    this.song = navParams.get("song");
 
     this.song.chords = this.song.chords.replace(/\n/g, "<br />");
+
+    this.myTracks = [{
+      src: 'bass.mp3',
+      artist: 'John Mayer',
+      title: 'Why Georgia',
+      preload: 'metadata' // tell the plugin to preload metadata such as duration for this track, set to 'none' to turn off
+    }];
 
   }
 
   editChords() {
-  		this.navCtrl.push(AddSong,{
-			isEdit: true,
-			song : this.song
-		});
+      this.navCtrl.push(AddSong,{
+      isEdit: true,
+      song : this.song
+    });
 
   }
 
-
-  playFile() {
-    // this.fileOpener.open('/storage/emulated/0/Download/hamma.mp3', 'audio/mpeg3')
-    //   .then(() => console.log('File is opened'))
-    //   .catch(e => console.log('Error openening file', e));
-
-
-    this.fileOpener.open('file://storage/emulated/0/Download/hamma.mp3', 'audio/mpeg3')
-      .then(() => console.log('File is opened'))
-      .catch(e => console.log('Error openening file', e));
-
-
-      // const onStatusUpdate = (status) => console.log(status);
-      // const onSuccess = () => console.log('Action is successful.');
-      // const onError = (error) => console.error(error.message);
-
-      // const file: MediaObject = this.media.create('storage/emulated/0/Download/hamma.mp3', onStatusUpdate, onSuccess, onError);
-
-      // // play the file
-      // file.play();
-
+ ngAfterContentInit() {     
+    // get all tracks managed by AudioProvider so we can control playback via the API
+    this.allTracks = this._audioProvider.tracks; 
   }
-
-  showChordChart(chordsList) {
-
+  
+  playSelectedTrack() {
+    // use AudioProvider to control selected track 
+    this._audioProvider.play(this.myTracks[0]);
   }
+  
+  pauseSelectedTrack() {
+     // use AudioProvider to control selected track 
+     this._audioProvider.pause(this.myTracks[0]);
+  }
+         
+  onTrackFinished(track: any) {
+    console.log('Track finished', track)
+  } 
+
+
 
 }

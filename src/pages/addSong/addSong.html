@@ -11,6 +11,6 @@
  <ion-input text-center	type="text" [(ngModel)]="songName" placeholder="Song Name"></ion-input>
  <ion-input text-center	type="text" [(ngModel)]="capo" placeholder="Capo"></ion-input>
 
- <ion-textarea [(ngModel)]="chords" placeholder="Enter the chords" class="chords-area"></ion-textarea>
+ <ion-textarea [(ngModel)]="chords" placeholder="Enter the chords" class="chords-area"><div [innerHTML]="chords"></div></ion-textarea>
 
 </ion-content>

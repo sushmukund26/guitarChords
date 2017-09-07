@@ -26,6 +26,7 @@ export class AddSong {
       this.songName = this.navParams.get("song").name;
       this.capo = this.navParams.get("song").capo;
       this.chords = this.navParams.get("song").chords;
+      this.chords = this.chords.split("<br />").join("\n");
     }
     else {
       this.title = "Add Song";
