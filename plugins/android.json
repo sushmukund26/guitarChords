@@ -1,0 +1,55 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-nativeaudio": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "com.megster.cordova.FileChooser": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-filepath": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.mymobileapp549725"
+        }
+    }
+}
