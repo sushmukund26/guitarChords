@@ -11,15 +11,11 @@
   [showCancelButton]="false"
   (ionInput)="onInput($event)">
 </ion-searchbar>
+<button ion-button icon-only (click)="presentPopover($event)" class="fRight">
+  <ion-icon name="ios-funnel"></ion-icon>
+</button>
 <!-- Search bar end -->
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let post of posts">
-      <img [src]="post.data.url" />
-    </ion-item>
-  </ion-list>
-</ion-content>
 <!-- List -->
 <ion-list *ngIf="displayedSongList.length != 0" class="songList">
    <ion-item *ngFor="let item of displayedSongList | orderBy : order" (click)="viewChords(item)">

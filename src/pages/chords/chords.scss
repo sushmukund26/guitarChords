@@ -1,9 +1,10 @@
 .page-home {
 	padding : 0 !important;
+	margin-bottom : 0 !important;
 }
 
 .searchBar {
-	width : 100%;
+	width : 86%;
 	padding : 0 !important;
 	position : fixed;
 	top : 56px;	
@@ -12,6 +13,7 @@
 
 .scroll-content {
 	padding : 5px 0 0 0 !important;
+	margin-bottom : 0 !important;
 }
 
 .songList {
@@ -34,4 +36,27 @@
 .capoIcon {
 	float : right;
 	font-size : 12px;
+}
+
+.fRight {
+	float : right;
+}
+
+.button[icon-only] {
+	background: transparent !important;
+	padding : 0 !important;
+	margin : 0 !important;
+	position : fixed;
+	top : 56px;	
+	right: 0 !important;
+	z-index : 1;
+	height: 42px;
+	color: black !important;
+}
+
+.popover-content {
+	top: 97px !important;
+	right: 0 !important;
+	left: 238px !important;
+	width: 120px !important;
 }

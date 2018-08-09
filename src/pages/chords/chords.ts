@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { NavController, PopoverController, ViewController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
@@ -8,6 +8,36 @@ import { AddSong } from '../addSong/addSong';
 import { ChordsDisplayPage } from '../chords_display/chords_display';
 import { songListService } from '../../services/songList.service';
 
+@Component({
+  template: `
+    <ion-list>
+      <button ion-item (click)="filter('english')">English</button>
+      <button ion-item (click)="filter('hindi')">Hindi</button>
+      <button ion-item (click)="filter('malayalam')">Malayalam</button>
+      <button ion-item (click)="filter('tamil')">Tamil</button>
+    </ion-list>
+  `,
+  selector: 'popOver'
+})
+export class PopoverPage {
+  private _anEmitter: EventEmitter< any >;
+
+  constructor( public navParams: NavParams, public viewCtrl: ViewController ) {
+    this._anEmitter = navParams.data.theEmitter;
+  }
+
+  filter( somePassedArg: string ) {
+    console.log("First value"+somePassedArg)
+    this._anEmitter.emit( somePassedArg );
+    this.viewCtrl.dismiss();
+  }
+
+  // @Output() filtered = new EventEmitter<boolean>();
+
+  // filter(value) {
+  //   this.filtered.emit(value);
+  // }
+}
 
 @Component({
   selector: 'chords',
@@ -22,62 +52,12 @@ export class ChordsPage {
   posts;
   test;
 
-  constructor(public navCtrl: NavController, private songListService: songListService, public http: Http) {
+  constructor(public navCtrl: NavController, private songListService: songListService, public http: Http, public popoverCtrl: PopoverController) {
     this.addSong = AddSong;
     this.songList = this.songListService.getSongList();
     this.displayedSongList = this.songList;
-
-
-
-   let opt: RequestOptions
-   let myHeaders: Headers = new Headers
-   myHeaders.append('Content-Type', 'application/json')
-   myHeaders.append('Access-Control-Allow-Origin', '*')
-   // "Access-Control-Allow-Origin: *"
-   
-   opt = new RequestOptions({
-     headers: myHeaders
-    })   
-
-     this.test = this.http.get('http://billwale-api.azurewebsites.net/user', opt).map(res => res.json()).subscribe(data => {
-      console.log(data);
-      this.test = data;
-      return data;
-    });
-    // console.log(this.test.length);
-    // problem
-
-
-
-    // problem
-
-//     return new Promise((resolve,reject) => {
-//   var json = JSON.stringify({ "output": {"count" : 6}});
-//   var params = 'json=' + json;
-//   var myHeaders = new Headers();
-//   myHeaders.set('userId', 'eeSt9q2SMi');
-//    myHeaders.append('Content-Type', 'application/json')
-//    myHeaders.append('Access-Control-Allow-Origin', '*')
-
-//   this.http.post('http://10.134.22.19:3000/challenge/output',
-//       params, {
-//           headers: headers
-//       })
-//       .map(res => res.json())
-//       .subscribe(data => {
-//           this.data = data;
-//           resolve(this.data);
-//       },
-//       error => reject(error),
-//       () => console.log("Finished")
-//   );
-// });
-
-    //  this.http.post('10.134.22.19:3000/challenge/output').map(res => res.json()).subscribe(data => {
-    //     this.posts = data.data.children;
-    //     console.log("thajdhfkjdnkjdasfn"+this.posts);
-    // });
-
+    console.log("--------------");
+    console.log(this.displayedSongList);
     }
 
    viewChords(selectedSong) {
@@ -95,6 +75,28 @@ export class ChordsPage {
           return song.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
         }); 
     }
+  }
+
+ presentPopover(myEvent) {
+
+   let myEmitter = new EventEmitter< any >();
+    myEmitter.subscribe(
+      v => this.filter(v)
+    );
+
+    let popover = this.popoverCtrl.create(PopoverPage, {theEmitter: myEmitter});
+    popover.present({
+      ev: "myEvent"
+      // (voted): "filter($event)"
+    });
+  }
+
+  filter(language: string) {
+    console.log("First language"+language)
+    this.displayedSongList = this.songList;
+    this.displayedSongList = this.displayedSongList.filter((song) => {
+          return song.language.toLowerCase().indexOf(language.toLowerCase()) > -1;
+        }); 
   }
 }
 

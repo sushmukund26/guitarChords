@@ -12,6 +12,7 @@ import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProvider
 import { RecordPage } from '../pages/record/record';
 import { SongsPage } from '../pages/songs/songs';
 import { ChordsPage } from '../pages/chords/chords';
+import { PopoverPage } from '../pages/chords/chords';
 import { ChordsDisplayPage } from '../pages/chords_display/chords_display';
 import { AddSong } from '../pages/addSong/addSong';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -27,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RecordPage,
     SongsPage,
     ChordsPage,
+    PopoverPage,
     ChordsDisplayPage,
     TabsPage,
     AddSong
@@ -43,6 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     RecordPage,
     SongsPage,
+    PopoverPage,
     ChordsPage,
     ChordsDisplayPage,
     TabsPage,
